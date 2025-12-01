@@ -94,8 +94,14 @@ table2 <- reactive({
   table2 <- lead_vol_dat1_1 %>%
     filter(var != "voldead") %>%
     select(Design, var, n, grd, inv, rom, l95rom, u95rom, sigrope) %>%
-    mutate(var = fct_recode(var, "Age (yrs)" = "age", "HT (m)" = "ht",
-                            "BA (m2/ha)" = "ba", "Volume (m3/ha)" = "vol"),
+    mutate(
+      #var = fct_recode(var, "Age (yrs)" = "age", "HT (m)" = "ht", 
+      #                      "BA (m2/ha)" = "ba", "Volume (m3/ha)" = "vol"),
+      #var = factor(var, levels = c("Age (yrs)", "HT (m)", "BA (m2/ha)", "Volume (m3/ha)")),
+      var = factor(var,
+                   levels = c("age", "ht", "ba", "vol"),
+                   labels = c("Age (yrs)", "HT (m)", "BA (m2/ha)", "Volume (m3/ha)")
+      ),
            inv = round(inv, 1),
            grd = round(grd, 1),
            rom = round(rom, 2),
@@ -106,6 +112,7 @@ table2 <- reactive({
            #u95rom = round(u95rom, 2),
            #inv = round(inv, 1)
     ) %>%
+    arrange(Design, var) %>%  
     flextable() %>%
     merge_v(j = ~Design)
   
