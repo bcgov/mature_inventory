@@ -32,7 +32,7 @@ description <- reactive({
                  results compiled by FAIB for the mature stand ground sampling 
                  (>50 years) from our CMI and VRI PHASE2 ground sample programs: </p>",
                  "<ul><li><b>GRID -</b> Change Monitoring Inventory (CMI) ground 
-                 samples have been established across BC. The target population 
+                 samples have been established across BC beginning in 2012. The target population 
                  for the CMI ground sample program is defined as all Crown 
                  forested stands in the Vegetation Resources Inventory (VRI) 
                  Vegcomp rank 1 layer. CMI ground samples (dots on map, below) 
@@ -40,17 +40,17 @@ description <- reactive({
                  northernmost TSAs and one-time intensified grid; 10km x 10km in two and 10km x 20km in three 
                  TSAs (<b>SUP-GRID</b>)], with trees tagged in 0.04ha circular monitoring plots 
                  with a planned ten-year re-measurement cycle.</li>",
-                 "<li><b>PHASE2 –</b> Following the completion of a photo-estimated 
-                 inventory project, Vegetation Resource Inventory (VRI) audit 
-                 plots will be established in the vegetated treed portion of the 
-                 landbase to verify the accuracy of this new spatial inventory. 
-                 VRI audit plots may be randomly established in Timber Supply 
-                 Areas (TSAs), Tree Farm Licenses (TFLs), or other strata of 
-                 interest. As an example, for a given TSA, the vegetated-treed, 
-                 the Timber Harvest Land Base (THLB) or mature spruce portion 
-                 may be sampled. Refer to the 'Reference' tab at the bottom of 
-                 the page to find links to the sample designs for each PHASE2 
-                 strata of interest.</li></ul>",
+                 "<li><b>PHASE2 –</b> Vegetation Resource Inventory (VRI) Phase 
+                 2 audit plots were established between 1999 - 2016 to verify 
+                 the accuracy of new Phase 1 photo-estimated inventory projects.  
+                 Phase 2 plots were established by Timber Supply Area (TSA), 
+                 Tree Farm License (TFL), or other strata of interest. As an 
+                 example, the target population for a given TSA may have included 
+                 the vegetated-treed, the Timber Harvest Land Base (THLB) or 
+                 mature spruce portion sampled. Refer to the 'Reference' tab at 
+                 the bottom of the page to find links to published inventory 
+                 planning documents for specific sampling designs and strata of 
+                 interest..</li></ul>",
                  ifelse(input$SelectVar == "Quesnel TSA", 
                         "</br><p>The sample space for Quesnel TSA PHASE2 is confined 
                         to the eastern part of the TSA, as the western region 
@@ -338,7 +338,7 @@ samplesize <- reactive({
                                      grid_size[grid_size$Design %in% c("GRID", "Quesnel Overall"),]$grid_size, 
                                      " NFI grid"),
                               ifelse(Design %in% c("SUP-GRID", "Quesnel West"), 
-                                     paste0("fixed area temporary samples on a ", 
+                                     paste0("fixed area temporary and monitoring samples on a ", 
                                             grid_size[grid_size$Design %in% c("SUP-GRID", "Quesnel West"),]$grid_size, 
                                             " supplemental grid"),
                                      "temporary sample clusters using PPSWR selection")
