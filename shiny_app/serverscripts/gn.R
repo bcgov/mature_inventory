@@ -61,7 +61,7 @@ output$disclaimer <- renderUI({
 
 gn <- reactive({
   gn <- paste0(
-    '<p>This app was last updated on 15 July, 2025.</p>
+    '<p>This app was last updated on 08 December, 2025. The data and code for this app are available <a href="https://github.com/bcgov/mature_inventory" target="_blank">here</a>.</p>
 <br>
 <p><strong>Overview</strong></p>
 <p>* The Forest Analysis and Inventory Branch (FAIB) website contains a&nbsp;<a href="https://www2.gov.bc.ca/gov/content/industry/forestry/managing-our-forest-resources/forest-inventory/ground-sample-inventories" target="_blank">General Overview of FAIB Ground Sample Inventories.</a></p>
