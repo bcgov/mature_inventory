@@ -136,10 +136,6 @@ corsp_vol_flex()
 
 #### 3. 95% confidence intervals for the Ratio Of Means (ROM) and a 10% Region of Practical Equivalence (ROPE) were used to assess the level of agreement in forest attributes between ground samples and the VRI.
   
-| **Overall Ratio of means (ground/inventory), 95% confidence interval, & ROPE* interval for the live attributes age, height, basal area & volume, across each sample design.**
-
-<br>
-
 ```{r, include=T, fig.width=8,echo=F,warning=FALSE}
 fig2() + theme_bw(12) +
       theme(
@@ -154,6 +150,13 @@ fig2() + theme_bw(12) +
       axis.text.y = element_blank(), axis.ticks.x = element_blank()
       ) 
 ```
+
+| **Overall Ratio of means (ground/inventory), 95% confidence interval, & ROPE* interval for the live attributes age, height, basal area & volume, across each sample design.**
+
+<br>
+
+| *For those strata with a least 8 observations, a region of practical equivalence (ROPE) is pre-determined at 0.9-1.1 to assess if there is a practical difference with the attribute assessed. A practical difference (Y) occurs when the ratio-of-means (ROM) confidence interval (CI) sits entirely outside the ROPE, no practical difference (N) occurs when the ROM CI is entirely within the ROPE, all other situations are inconclusive (I).
+
 
 </div>
 <div class="box-plain">
@@ -170,8 +173,6 @@ test2()
 
 test3()
 ```
-
-| *For those strata with a least 8 observations, a region of practical equivalence (ROPE) is pre-determined at 0.9-1.1 to assess if there is a practical difference with the attribute assessed. A practical difference (Y) occurs when the ratio-of-means (ROM) confidence interval (CI) sits entirely outside the ROPE, no practical difference (N) occurs when the ROM CI is entirely within the ROPE, all other situations are inconclusive (I).
 
 </div>
 
@@ -225,6 +226,8 @@ fig4() + theme_bw(12) +
 ```
 
 | **Figure 3. Overall live standing species composition (% of total live merch volume reported in Table 3) between ground and inventory, for both GRID (left) and PHASE 2 (right) sample designs. Species percent is computed from the summed live merch volume (m3/ha) by species of all plots combined. Species composition overlap is a rough index, and expressed as the ratio between the minimum in common relative to the maximum in common that could have been.**
+
+<br>
   
 ```{r, fig.height=4,echo=FALSE,warning=FALSE}
 fig5() + theme_bw(12) +
@@ -240,6 +243,7 @@ fig5() + theme_bw(12) +
 
 | **Figure 4. Overall dead standing species composition (% of total dead merch volume reported in Table 4) of ground samples, for both GRID (left) and PHASE 2 (right) sample designs. Species percent is computed from the summed dead merch volume (m3/ha) by species of all plots combined. The inventory dead volume is modeled primarily as Mountain Pine Beetle mortality, and therefore assumed 100% allocated to PL.**
   
+  <br>
   
 ```{r, fig.height=4,echo=FALSE,warning=FALSE, message = FALSE}
 stockplot() + theme_bw(12) +
@@ -295,6 +299,13 @@ maturetsr() + theme_bw(12) +
       panel.grid.major.y = element_line(color = 'darkgray'), 
       rect = element_blank()
     ) 
+
+```
+  
+<br>
+
+
+```{r, fig.height=4,echo=FALSE,warning=FALSE}
 
 vol_bias() + theme_bw(12) +
     #theme_bw() + 
@@ -551,8 +562,7 @@ fig3_2()
 
 ### General Notes / Assumptions / References
 
-`r htmltopdf(HTML(gn()))`
-
+`r htmltopdf(gn())`
 
 ### Tree Species and Damage Agents
 
