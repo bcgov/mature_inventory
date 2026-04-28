@@ -28,13 +28,14 @@ ld_table1 <- reactive({
     lead_vol1 <- lead_vol1 %>%
       mutate(BA_HA_LS_old = BA_HA_LS,
              STEMS_HA_LS_old = STEMS_HA_LS,
-             NTWB_NVAF_LS_old = NTWB_NVAF_LS,
-             BA_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                               BA_HA_LS * (1-ba_mortality), BA_HA_LS),
-             STEMS_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                  STEMS_HA_LS * (1-stem_mortality), STEMS_HA_LS),
-             NTWB_NVAF_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                   NTWB_NVAF_LS * (1-ntwb_mortality), NTWB_NVAF_LS))
+             NTWB_NVAF_LS_old = NTWB_NVAF_LS#,
+             #BA_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                  BA_HA_LS * (1-ba_mortality), BA_HA_LS),
+             #STEMS_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                     STEMS_HA_LS * (1-stem_mortality), STEMS_HA_LS),
+             #NTWB_NVAF_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                      NTWB_NVAF_LS * (1-ntwb_mortality), NTWB_NVAF_LS)
+             )
     
     correct_ls <- lead_vol1 %>%
       filter(CLSTR_ID %in%  clstr_id()) %>%
@@ -106,13 +107,14 @@ ld_table2 <- reactive({
     lead_vol1 <- lead_vol1 %>%
       mutate(BA_HA_LS_old = BA_HA_LS,
              STEMS_HA_LS_old = STEMS_HA_LS,
-             NTWB_NVAF_LS_old = NTWB_NVAF_LS,
-             BA_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                               BA_HA_LS * (1-ba_mortality), BA_HA_LS),
-             STEMS_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                  STEMS_HA_LS * (1-stem_mortality), STEMS_HA_LS),
-             NTWB_NVAF_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                   NTWB_NVAF_LS * (1-ntwb_mortality), NTWB_NVAF_LS))
+             NTWB_NVAF_LS_old = NTWB_NVAF_LS#,
+             #BA_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                  BA_HA_LS * (1-ba_mortality), BA_HA_LS),
+             #STEMS_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                     STEMS_HA_LS * (1-stem_mortality), STEMS_HA_LS),
+             #NTWB_NVAF_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                      NTWB_NVAF_LS * (1-ntwb_mortality), NTWB_NVAF_LS)
+             )
     
     correct_ls <- lead_vol1 %>%
       filter(CLSTR_ID %in%  clstr_id()) %>%
