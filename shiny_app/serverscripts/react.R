@@ -193,13 +193,13 @@ lead_vol1 <- reactive({
   lead_vol1 <- lead_vol1 %>%
       mutate(BA_HA_LS_old = BA_HA_LS,
              STEMS_HA_LS_old = STEMS_HA_LS,
-             NTWB_NVAF_LS_old = NTWB_NVAF_LS,
-             BA_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                               BA_HA_LS * (1-ba_mortality), BA_HA_LS),
-             STEMS_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                  STEMS_HA_LS * (1-stem_mortality), STEMS_HA_LS),
-             NTWB_NVAF_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                   NTWB_NVAF_LS * (1-ntwb_mortality), NTWB_NVAF_LS)
+             NTWB_NVAF_LS_old = NTWB_NVAF_LS#,
+             #BA_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                  BA_HA_LS * (1-ba_mortality), BA_HA_LS),
+             #STEMS_HA_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                     STEMS_HA_LS * (1-stem_mortality), STEMS_HA_LS),
+             #NTWB_NVAF_LS = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+             #                      NTWB_NVAF_LS * (1-ntwb_mortality), NTWB_NVAF_LS)
       )
   
   return(lead_vol1)
@@ -213,22 +213,24 @@ spc_vol1 <- reactive({
     spc_vol1 <- sample_quesnel() %>%
       select(CLSTR_ID, Design) %>%
       left_join(spc_vol %>% select(-Design), by = "CLSTR_ID") %>%
-      left_join(lead_vol %>% select(CLSTR_ID, MEAS_YR, fire_year:ntwb_mortality),
-                by = "CLSTR_ID") %>%
-      mutate(LIVE_VOL_PER_HA_old = LIVE_VOL_PER_HA,
-             LIVE_VOL_PER_HA = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                      LIVE_VOL_PER_HA_old * (1-ntwb_mortality), LIVE_VOL_PER_HA_old)
-      )
+      left_join(lead_vol %>% select(CLSTR_ID, MEAS_YR#, fire_year:ntwb_mortality
+                                    ),
+                by = "CLSTR_ID") #%>%
+      #mutate(LIVE_VOL_PER_HA_old = LIVE_VOL_PER_HA,
+      #       LIVE_VOL_PER_HA = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+      #                                LIVE_VOL_PER_HA_old * (1-ntwb_mortality), LIVE_VOL_PER_HA_old)
+      #)
     
   } else spc_vol1 <- spc_vol %>%
       mutate(Design = ifelse(Design %in% c("GRID", "SUP-GRID"), "GRID", "PHASE2")) %>%
       mutate(Design = factor(Design, levels = c("GRID", "PHASE2"))) %>%
-      left_join(lead_vol %>% select(CLSTR_ID, MEAS_YR, fire_year:ntwb_mortality),
-                by = "CLSTR_ID") %>%
-      mutate(LIVE_VOL_PER_HA_old = LIVE_VOL_PER_HA,
-             LIVE_VOL_PER_HA = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
-                                      LIVE_VOL_PER_HA_old * (1-ntwb_mortality), LIVE_VOL_PER_HA_old)
-      )
+      left_join(lead_vol %>% select(CLSTR_ID, MEAS_YR#, fire_year:ntwb_mortality
+                                    ),
+                by = "CLSTR_ID") #%>%
+      #mutate(LIVE_VOL_PER_HA_old = LIVE_VOL_PER_HA,
+      #       LIVE_VOL_PER_HA = ifelse(!is.na(fire_year) & fire_year >= MEAS_YR, 
+      #                                LIVE_VOL_PER_HA_old * (1-ntwb_mortality), LIVE_VOL_PER_HA_old)
+      #)
   
   return(spc_vol1)
 })
