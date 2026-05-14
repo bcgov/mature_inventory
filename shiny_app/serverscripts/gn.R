@@ -2,9 +2,9 @@
 disclaimer <- reactive({
   disclaimer <- paste0(
     "<p>Ground sample measurement dates (and compilations) range between 2004 
-    and 2023.</p>","
-<p>In contrast the spatial inventory attributes (from the 2023 published 
-Forest Vegetation Composite Rank 1 Layer and projected to the end of 2023), 
+    and 2025.</p>","
+<p>In contrast the spatial inventory attributes (from the 2025 published 
+Forest Vegetation Composite Rank 1 Layer and projected to the end of 2024), 
 are adjusted back to the ground sample measurement year using VDYP7 Batch / 
 Console processing.</p>
 <p>Ground data include all available design-based CMI, VRI and supplemental 
@@ -99,7 +99,7 @@ output$disclaimer <- renderUI({
 
 gn <- reactive({
   gn <- paste0(
-    '<p>This app was last updated on 08 December, 2025. The data and code for this app are available <a href="https://github.com/bcgov/mature_inventory" target="_blank">here</a>.</p>
+    '<p>This app was last updated on 14 May, 2026. The data and code for this app are available <a href="https://github.com/bcgov/mature_inventory" target="_blank">here</a>.</p>
 
 <p><strong>Overview</strong></p>
 <ul>
