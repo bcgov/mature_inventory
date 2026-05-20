@@ -310,6 +310,19 @@ ui <- dashboardPage(
                         br(),
                         br()
                ),
+               #tabPanel(title = "Stock Tables & Small Trees",
+               #         #hr(),
+               #         uiOutput('sd_header'),
+               #         br(),
+               #         div(
+               #         plotOutput("stock_table_vol", width = "700px"),
+               #         br(),
+               #         plotOutput("stock_table_stem", width = "700px"),
+               #         br(),
+               #         plotOutput("smalltree", width = "500px"), align = "center"),
+               #         br()
+               #),
+               
                
                "Ground vs. Inventory",
                tabPanel(title = "Stand Summaries",
@@ -341,7 +354,11 @@ ui <- dashboardPage(
                         uiOutput("fig5_caption"),
                         br(),
                         plotOutput("stock_table", width = "800px", height = "400px"),
+                        br(),
+                        plotOutput("stock_table_stem", width = "800px", height = "300px"),
                         uiOutput("stock_caption"),
+                        br(),
+                        div(plotOutput("smalltree", width = "500px"), align = "center"),
                         br(),
                ),
                #tabPanel(title = "Overall Species",

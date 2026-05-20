@@ -338,7 +338,7 @@ samplesize <- reactive({
                                      grid_size[grid_size$Design %in% c("GRID", "Quesnel Overall"),]$grid_size, 
                                      " NFI grid"),
                               ifelse(Design %in% c("SUP-GRID", "Quesnel West"), 
-                                     paste0("fixed area temporary and monitoring samples on a ", 
+                                     paste0("fixed or variable radius temporary and monitoring samples on a ", 
                                             grid_size[grid_size$Design %in% c("SUP-GRID", "Quesnel West"),]$grid_size, 
                                             " supplemental grid"),
                                      "temporary sample clusters using PPSWR selection")

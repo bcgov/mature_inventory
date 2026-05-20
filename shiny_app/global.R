@@ -44,6 +44,7 @@ library(pagedown)
 library(htmltools)
 library(webshot)
 library(survey)
+library(ggnewscale)
 
 
 # 2. required datafiles ------------------------------------------------------------
@@ -58,6 +59,7 @@ tree_fh_data <- readRDS("data/Tree_FH_data.rds")
 prj_dat <- readRDS("data/prj_dat.rds")
 prj_msyt_vdyp <- readRDS("data/prj_msyt_vdyp.rds")
 tsr_volproj <- readRDS("data/tsr_volproj.rds")
+smtr_data <- readRDS("data/smtr_data.rds")
 
 
 # lookups 
@@ -109,7 +111,18 @@ damclass_color$Var3 <- c(RColorBrewer::brewer.pal(n = 7, "Dark2"), RColorBrewer:
                          RColorBrewer::brewer.pal(n = 7, "Pastel2"), rep("darkgray", 7))
 damclass_color$Var4 <- paste0(damclass_color$Var1, "-", damclass_color$Var2)
 
-# common parameters for plots
+
+tree_colors <- c("BA" = "#99600F", "BG" = "#B3823E", "BL" = "#CCAA7A",
+                 "HM" = "#54990F", "HW" = "#78B33E", "YC" = "#990F26", "HR" = "#B33E52",
+                 "JR" = "#A6763D", "UP" = "#FB6A4A", "EP" = "#C79E00",
+                 "CW" = "#CC7A88", "TW" = "#E6B8BF", "DE" = "#F3C300", "Decid" = "#F3C300", "FD" = "#AA4499",
+                 "LA" = "#FDBF6F", "LW" = "#FFCC80", "LT" = "#F39C12",
+                 "PA" = "#0F8299", "PL" = "#3E9FB3", "PW" = "#7ABECC", "PY" = "#B8DEE6",
+                 "SB" = "#3D0F99", "SE" = "#653EB3", "SS" = "#967ACC", "SW" = "#C7B8E6",
+                 "XC" = "#9E9E9E", "Other" = "#9E9E9E")
+
+species_order <- sort(names(tree_colors))
+
 
 
 

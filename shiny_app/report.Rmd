@@ -181,6 +181,7 @@ incProgress(1/3)
 #Sys.sleep(2)
 ```
 
+
 ## Ground vs. Inventory
 
 ### Stand Summaries
@@ -252,9 +253,23 @@ stockplot() + theme_bw(12) +
         panel.grid.major.y = element_line(color = 'darkgray'), 
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank(),
-        legend.position = "bottom"
+        legend.position = "top"
         #rect = element_blank()
       ) 
+```
+
+
+```{r, fig.height=2.5,echo=FALSE,warning=FALSE, message = FALSE}
+stockplot_stem() + theme_bw(12) +
+    theme(
+        #axis.line = element_line(colour="darkgray"), 
+        panel.grid.major.y = element_line(color = 'darkgray'), 
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.position = "none"
+        #rect = element_blank()
+      ) 
+
 
 ```
 
@@ -263,6 +278,20 @@ stockplot() + theme_bw(12) +
   
   
 <br>
+
+```{r, fig.height=4,fig.width=5,echo=FALSE,warning=FALSE, message = FALSE}
+smalltrplot() + theme_bw(12) +
+    theme(
+        #axis.line = element_line(colour="darkgray"), 
+        panel.grid.major.y = element_line(color = 'darkgray'), 
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.position = "right"
+        #rect = element_blank()
+      ) 
+
+```
+<br> 
 
 ### BA, Age, Height, and Volume
 
