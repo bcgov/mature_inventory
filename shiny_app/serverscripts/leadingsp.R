@@ -631,7 +631,7 @@ smalltrplot <- reactive({
       geom_bar(position='stack', stat='identity', width = 0.7) +
       scale_fill_manual(values = tree_colors, name = NULL) +
       scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
-      labs(x='Size Class', y='Stems/ha', title = "Small Trees") +
+      labs(x='Size Class', y='Stems/ha', title = "Small Trees (GRID only)") +
       theme(
         #axis.line = element_line(colour="darkgray"), 
         panel.grid.major.y = element_line(color = 'darkgray'), 
