@@ -359,6 +359,7 @@ ui <- dashboardPage(
                         uiOutput("stock_caption"),
                         br(),
                         div(plotOutput("smalltree", width = "500px"), align = "center"),
+                        uiOutput("smalltree_caption"),
                         br(),
                ),
                #tabPanel(title = "Overall Species",

@@ -218,7 +218,7 @@ fig4 <- reactive({
     scale_fill_manual(values = c("steelblue", "#B4464B"), name = NULL) +
     scale_x_discrete(drop=T) +
     scale_y_continuous(labels = scales::label_percent(), expand = expansion(mult = c(0, 0.1))) +
-    labs(x = "Species", y = "% of live net merch vol",
+    labs(x = "Species", y = expression("% of Live Net Merch Vol. (m"^3*"/ha)"),
          title = "Live Species Composition - GRID / PHASE 2",
          caption = paste0()) +
     theme(
@@ -277,9 +277,9 @@ output$fig4_flex <- renderUI({
 output$fig4_caption <- renderUI({
   req(input$SelectVar)
   HTML(paste0("<h5>Figure 3. Overall live standing species composition (% of 
-              total live merch volume reported in Table 3) between ground and 
+              total live net merchantable volume reported in Table 3) between ground and 
               inventory, for both GRID (left) and PHASE 2 (right) sample designs. 
-              Species percent is computed from the summed live merch volume 
+              Species percent is computed from the summed live net merchantable volume 
               (m3/ha) by species of all plots combined. Species composition 
               overlap is a rough index, and expressed as the ratio between the 
               minimum in common relative to the maximum in common that could 
@@ -304,7 +304,7 @@ fig5 <- reactive({
     scale_fill_manual(values = c("steelblue", "#B4464B"), name = NULL) +
     scale_x_discrete(drop=T) +
     scale_y_continuous(labels = scales::label_percent(), expand = expansion(mult = c(0, 0.1))) +
-    labs(x = "Species", y = "% of live net merch vol",
+    labs(x = "Species", y = expression("% of Dead Net Merch Vol. (m"^3*"/ha)"),
          title = "Dead Species Composition - GRID / PHASE 2") +
     theme(
       panel.grid.major.y = element_line(color = 'darkgray'), 
@@ -332,9 +332,9 @@ output$fig5 <- renderPlot({
 output$fig5_caption <- renderUI({
   req(input$SelectVar)
   HTML(paste0("<h5>Figure 4. Overall dead standing species composition (% of 
-              total dead merch volume reported in Table 4) of ground samples, 
+              total dead merchantable volume reported in Table 4) of ground samples, 
               for both GRID (left) and PHASE 2 (right) sample designs. Species 
-              percent is computed from the summed dead merch volume (m3/ha) by 
+              percent is computed from the summed dead merchantable volume (m3/ha) by 
               species of all plots combined. The inventory dead volume is 
               modeled primarily as Mountain Pine Beetle mortality, and therefore 
               assumed 100% allocated to PL.</h5>"))
@@ -430,7 +430,7 @@ fig6 <- reactive({
                  'ba' = 'Basal Area (m2/ha)',
                  'age'="Total Age (yrs)",
                  'ht' = 'Height (m)',
-                 'vol'="Volume (m3/ha)",
+                 'vol'= "Net Merch Vol. (m3/ha)",
                  "GRID" = "GRID",
                  "PHASE2" = "PHASE2",
                  "Quesnel West" = "Quesnel West",
@@ -512,7 +512,7 @@ stockplot <- reactive({
       scale_fill_manual(values = tree_colors, name = NULL) +
       scale_y_continuous(expand = expansion(mult = c(0, 0.1)), labels = scales::percent) +
       scale_x_discrete(drop=FALSE) +
-      labs(x = "DBH class (cm)", y = "% of total vol/ha",
+      labs(x = "DBH class (cm)", y = "% of whole stem volume (m3/ha)",
            title = "Stock Table - live trees") +
       theme(
         #axis.line = element_line(colour="darkgray"), 
@@ -601,7 +601,8 @@ output$stock_table_stem <- renderPlot({
 
 output$stock_caption <- renderUI({
   req(input$SelectVar)
-  HTML(paste0("<h5>Figure 5. Live whole stem volume by DBH class, including all standing trees >= 4cm DBH at the latest measurement.</h5>"))
+  HTML(paste0("<h5>Figure 5. Live whole stem volume (m3/ha) and total stems/ha by DBH class, including all 
+              standing trees >= 4cm DBH at the latest measurement.</h5>"))
   
 })
 
@@ -653,8 +654,12 @@ output$smalltree <- renderPlot({
 })
 
 
-
-
+output$smalltree_caption <- renderUI({
+  req(input$SelectVar)
+  HTML(paste0("<h5>Figure 6. Live total stems/ha of small trees by height class, 
+                                   including all standing trees <4cm DBH at the latest measurement.</h5>"))
+  
+})
 
 
 stdcode_text <- reactive({

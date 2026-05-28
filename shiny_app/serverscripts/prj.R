@@ -96,7 +96,7 @@ fig7_5 <- reactive({
       scale_x_continuous(limit = c(0, xlim)) +
       scale_color_manual(values = c("brown3"), name = NULL) +
       #scale_color_manual(values = c("brown3", "chartreuse4"), drop = FALSE) +
-      labs(x = "Age", y = "Volume (m3/ha)") +
+      labs(x = "Age", y = expression("Net Merch Vol. (m"^3*"/ha)")) +
       #facet_wrap(~Design, scale = "free_x", drop = FALSE) +
       theme(
         plot.caption = element_text(hjust = 0, size=15, face = "bold"),
@@ -285,7 +285,7 @@ pai_comment <- reactive({
 pai_text <- reactive({
   pai_text <-  HTML(paste0("<p><b>Periodic annual increment</b></p>
   <p>Test to Compare VDYP vs. Re-measured GRID Sample Periodic Annual Increment</p>
-  <p>Periodic annual increment (PAI) in units of m3/ha/yr, is computed from all 
+  <p>Periodic annual increment (PAI) of met merchantable volume (m3/ha/yr) is computed from all 
   re-measured GRID samples, and compared against predicted PAI from VDYP yield 
   tables over the same re-measurement period. Paired T-tests check for significant 
   differences in PAI (highlighted when significant at alpha=0.05, middle chart). 
@@ -428,7 +428,7 @@ maturetsr <- reactive({
               col="red2", linewidth = 1.2) +
     #scale_x_continuous(expand = c(0, 0.1))+ 
     scale_y_continuous(expand = c(0.01, 0.1), limits = c(-0.01, NA)) + 
-    labs(x = "Total Age (yrs)", y = "Volume (m3/ha)",
+    labs(x = "Total Age (yrs)", y = expression("Net Merch Vol. (m"^3*"/ha)"),
          title = "Mature Sample Remeasurements vs Average of TSR Yield Tables",
          subtitle = "(Spatially matched to each GRID sample location)") +
     #theme_bw() + 
@@ -482,7 +482,7 @@ vol_bias <- reactive({
                        values = c("Managed" =16, "AGGREGATE" =15, "VDYP" = 17, "VDYP-fill_missed_tsr" = 18), drop = FALSE) +
     #scale_x_continuous(expand = c(0, 0))+ 
     #scale_y_continuous(expand = c(0.01, 0), limits = c(-0.01, NA))+ 
-    labs(x = "Total Age (yrs)", y = "Predicted - Actual (m3/ha)",
+    labs(x = "Total Age (yrs)", y = expression("Predicted - Actual Net Merch Vol. (m"^3*"/ha)"),
          title = "Net merch volume total bias at each GRID location",
          subtitle = "(Predicted TSR yield table volume - Actual GRID volume)") +
     #theme_bw() + 
@@ -520,7 +520,7 @@ paitext <- reactive({
   #test1_comment <- test1_comment()
   tsrpaitest_comment <- tsrpaitest_comment()
   
-  paitext <- HTML( paste0("<p>Periodic annual increment (PAI) in units of m3/ha/yr, 
+  paitext <- HTML( paste0("<p>Periodic annual increment (PAI) of net merchantable volume (m3/ha/yr) 
                           is computed from all re-measured GRID samples, and 
                           compared against predicted PAI from TSR yield tables 
                           over the same re-measurement period. Paired T-tests 

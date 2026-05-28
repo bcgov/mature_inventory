@@ -274,7 +274,7 @@ stockplot_stem() + theme_bw(12) +
 ```
 
 
-| **Figure 5. Live whole stem volume by DBH class, including all standing trees >= 4cm DBH at the latest measurement.**
+| **Figure 5. Live whole stem volume (m3/ha) and total stems/ha by DBH class, including all standing trees >= 4cm DBH at the latest measurement.**
   
   
 <br>
@@ -291,6 +291,9 @@ smalltrplot() + theme_bw(12) +
       ) 
 
 ```
+
+| **Figure 6 under the small tree report “Figure 6. Live total stems/ha by height class, including all standing trees <4cm DBH at the latest measurement.**
+  
 <br> 
 
 ### BA, Age, Height, and Volume
@@ -584,7 +587,7 @@ fig3_2()
 :::
 
 
-| **Figure 8. Components of Bias (total, model, attribute), for Basal Area (left graph) and Volume (right graph), by ground sample design.**
+| **Figure 8. Components of Bias (total, model, attribute), for Basal Area (left graph) and Net Merchantable Volume (right graph), by ground sample design.**
 
 
 ## General Notes

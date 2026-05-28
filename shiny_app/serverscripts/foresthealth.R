@@ -453,7 +453,7 @@ cocfhplot <- reactive({
       #facet_grid(. ~ reorder(dam_class, -incid_stems, min), scales="free_x", space="free_x") +
       labs(x = "", y = "Incidence (%)",
            title = "Change in primary damage agent incidence",
-           subtitle = "(% of live tree volume)"
+           subtitle = "(% of live net merchantable volume)"
            #subtitle = "(% of live trees)"
            ) +
       theme(
@@ -575,8 +575,7 @@ fhcocflex <- reactive({
     #                             values = c("", "Number of Affected Trees by Primary Damage Agent", "")) #%>%
     flextable3 <- add_header_row(flextable3, top = TRUE, colwidths = c(1,1,1,4,1),
                                  values = c("total", "PDA","Inci",
-                                            "Volume of Affected Trees by Primary Damage Agent", "Prob"))
-    #align(align = "center", part = "all") %>%
+                                            "Net Merch Vol. of Affected Trees by Primary Damage Agent", "Prob"))   #align(align = "center", part = "all") %>%
     #merge_v(j = c(1:3,8), part = "header") 
     
     flextable3 <- add_footer_row(flextable3, top = FALSE, values =table6_total, 
