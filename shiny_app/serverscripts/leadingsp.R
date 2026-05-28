@@ -332,7 +332,7 @@ output$fig5 <- renderPlot({
 output$fig5_caption <- renderUI({
   req(input$SelectVar)
   HTML(paste0("<h5>Figure 4. Overall dead standing species composition (% of 
-              total dead merchantable volume reported in Table 4) of ground samples, 
+              total dead net merchantable volume reported in Table 4) of ground samples, 
               for both GRID (left) and PHASE 2 (right) sample designs. Species 
               percent is computed from the summed dead merchantable volume (m3/ha) by 
               species of all plots combined. The inventory dead volume is 

@@ -631,7 +631,7 @@ test2 <- reactive({
   test2 <- lead_vol_dat1 %>%
     filter(var == "voldead") %>%
     select(Design, var, n, grd, inv, rom, l95rom, u95rom, sigrope) %>%
-    mutate(var = "Dead Vol. (m3/ha)",
+    mutate(var = "Net Merch Vol. (m3/ha)",
            inv = round(inv, 1),
            grd = round(grd, 1),
            rom = round(rom, 2),

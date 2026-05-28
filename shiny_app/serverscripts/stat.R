@@ -184,7 +184,7 @@ table3 <- reactive({
   table3 <- lead_vol_dat1_1 %>%
     filter(var == "voldead") %>%
     select(Design, var, n, grd, inv, rom, l95rom, u95rom, sigrope) %>%
-    mutate(var = "Dead Vol. (m3/ha)",
+    mutate(var = "Net Merch Vol. (m3/ha)",
            inv = round(inv, 1),
            grd = round(grd, 1),
            rom = round(rom, 2),
@@ -210,7 +210,7 @@ table3 <- reactive({
                     sigrope = "ROPE Test")) %>%
     bold(part = 'header', bold = TRUE) %>%
     set_caption(caption = as_paragraph(
-      as_chunk("Table 4. Dead standing average volume, ROM (grd/inv), 95% confidence limits, and ROPE test.", 
+      as_chunk("Table 4. Dead standing average net merchantable volume, ROM (grd/inv), 95% confidence limits, and ROPE test.", 
                props = fp_text_default(bold = TRUE))),
       align_with_table = FALSE,
       word_stylename = "Table Caption") %>%
