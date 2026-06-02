@@ -509,6 +509,16 @@ ui <- dashboardPage(
              
                
                "General Notes",
+               tabPanel(title = "Tables of Mature GRID samples",
+                        h3("Total number of Mature GRID samples by:"),
+                        br(),
+                        fluidRow(align = 'center',
+                                 column(6,
+                                        uiOutput("mature_tables1")),
+                                 column(6,
+                                        uiOutput("mature_tables2")))
+               ),
+               
                tabPanel(#title = "Disclaimer",
                         #uiOutput('disclaimer'),
                         title = "General Notes / Assumptions",

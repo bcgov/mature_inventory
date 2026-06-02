@@ -1,4 +1,83 @@
 
+
+t1 <- reactive({
+  req(input$SelectVar)
+  
+  LD_dat <- lead_vol %>%
+    filter(CLSTR_ID %in% clstr_id_grid()) %>%
+    select(SITE_IDENTIFIER, CLSTR_ID, SPECIES, BA_HA_LS) %>%
+    mutate(SPC_GRP1 = substr(SPECIES,1,2),
+           SPC_GRP1 = ifelse(SPC_GRP1 =="", 'Nonstock', SPC_GRP1),
+           SPC_GRP1 = ifelse(is.na(BA_HA_LS) | BA_HA_LS == 0, 'Nonstock', SPC_GRP1)) %>%
+    mutate(occupancy = factor(ifelse(SPC_GRP1 =="Nonstock", "Empty", "Treed"),
+                              levels = c("Treed", "Empty")))
+  
+  t1 <- proc_freq(LD_dat, "occupancy",
+                  include.row_percent = F,
+                  include.column_percent = F,
+                  include.table_percent = F) 
+  
+  t1 <- t1 %>%
+    add_header_lines(values = "Mature GRID plot occupancy \nof trees >=4cm DBH", top = T) %>%
+    delete_rows(i = 2, part = "header") %>%
+    merge_at(i = 1, j = 1:3, part = "header") %>%
+    bold(part = 'header', bold = TRUE) %>%
+    autofit()
+  
+  return(t1)
+})
+
+
+output$mature_tables1 <- renderUI({
+  
+  htmltools_value(t1())
+  
+})
+
+
+t2 <- reactive({
+  req(input$SelectVar)
+  
+  smtr_table <- sample_data %>%
+    filter(CLSTR_ID %in% clstr_id_grid()) %>%
+    select(CLSTR_ID) %>%
+    left_join(smtr_data  %>%
+                filter(CLSTR_ID %in% clstr_id_grid())  %>%
+                group_by(CLSTR_ID) %>%
+                arrange(desc(SMTR_HA)) %>%
+                slice_head(n = 1) %>% data.table(), by = "CLSTR_ID") %>%
+    mutate(occupancy = case_when(is.na(SPECIES) ~ "Not Measured",
+                                 SMTR_HA == 0 ~ "Empty",
+                                 TRUE ~ "Measured")) %>%
+    mutate(occupancy = factor(occupancy,
+                              levels = c("Measured", "Empty", "Not Measured")))
+  
+  
+  t2 <- proc_freq(smtr_table, "occupancy",
+                  #main = "# Ground Samples by Year (end of growing season)",
+                  include.row_percent = F,
+                  include.column_percent = F,
+                  include.table_percent = F) 
+  
+  t2 <- t2 %>%
+    add_header_lines(values = "Availability of small tree data in Mature GRID plots", top = T) %>%
+    delete_rows(i = 2, part = "header") %>%
+    merge_at(i = 1, j = 1:3, part = "header") %>%
+    bold(part = 'header', bold = TRUE) %>%
+    autofit()
+  
+  return(t2)
+})
+
+
+output$mature_tables2 <- renderUI({
+  
+  htmltools_value(t2())
+  
+})
+
+
+
 disclaimer <- reactive({
   disclaimer <- paste0(
     "<p>Ground sample measurement dates (and compilations) range between 2004 
