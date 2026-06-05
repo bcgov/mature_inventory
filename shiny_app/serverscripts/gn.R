@@ -18,7 +18,7 @@ t1 <- reactive({
                   include.table_percent = F) 
   
   t1 <- t1 %>%
-    add_header_lines(values = "Mature GRID plot occupancy \nof trees >=4cm DBH", top = T) %>%
+    add_header_lines(values = "Mature GRID plot occupancy of trees >=4cm DBH", top = T) %>%
     delete_rows(i = 2, part = "header") %>%
     merge_at(i = 1, j = 1:3, part = "header") %>%
     bold(part = 'header', bold = TRUE) %>%
@@ -38,19 +38,30 @@ output$mature_tables1 <- renderUI({
 t2 <- reactive({
   req(input$SelectVar)
   
-  smtr_table <- sample_data %>%
+  #smtr_table <- sample_data %>%
+  #  filter(CLSTR_ID %in% clstr_id_grid()) %>%
+  #  select(CLSTR_ID) %>%
+  #  left_join(smtr_data  %>%
+  #              filter(CLSTR_ID %in% clstr_id_grid())  %>%
+  #              group_by(CLSTR_ID) %>%
+  #              arrange(desc(SMTR_HA)) %>%
+  #              slice_head(n = 1) %>% data.table(), by = "CLSTR_ID") %>%
+  #  mutate(occupancy = case_when(is.na(SPECIES) ~ "Not Measured",
+  #                               SMTR_HA == 0 ~ "Empty",
+  #                               TRUE ~ "Measured")) %>%
+  #  mutate(occupancy = factor(occupancy,
+  #                            levels = c("Measured", "Empty", "Not Measured")))
+  
+  smtr_table <- smtr_data %>%
     filter(CLSTR_ID %in% clstr_id_grid()) %>%
-    select(CLSTR_ID) %>%
-    left_join(smtr_data  %>%
-                filter(CLSTR_ID %in% clstr_id_grid())  %>%
-                group_by(CLSTR_ID) %>%
-                arrange(desc(SMTR_HA)) %>%
-                slice_head(n = 1) %>% data.table(), by = "CLSTR_ID") %>%
-    mutate(occupancy = case_when(is.na(SPECIES) ~ "Not Measured",
-                                 SMTR_HA == 0 ~ "Empty",
-                                 TRUE ~ "Measured")) %>%
+    group_by(CLSTR_ID) %>%
+    arrange(desc(SMTR_HA)) %>%
+    slice_head(n = 1)  %>%
+    mutate(occupancy = case_when(SMTR_HA_TOT == 0 ~ "Empty",
+                                 is.na(SPECIES) ~ "Not Measured",
+                                 TRUE ~ "Treed")) %>%
     mutate(occupancy = factor(occupancy,
-                              levels = c("Measured", "Empty", "Not Measured")))
+                              levels = c("Treed", "Empty", "Not Measured"))) %>% data.table()
   
   
   t2 <- proc_freq(smtr_table, "occupancy",
@@ -60,7 +71,7 @@ t2 <- reactive({
                   include.table_percent = F) 
   
   t2 <- t2 %>%
-    add_header_lines(values = "Availability of small tree data in Mature GRID plots", top = T) %>%
+    add_header_lines(values = "Mature GRID plot occupancy of trees <4cm DBH", top = T) %>%
     delete_rows(i = 2, part = "header") %>%
     merge_at(i = 1, j = 1:3, part = "header") %>%
     bold(part = 'header', bold = TRUE) %>%
