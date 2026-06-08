@@ -592,6 +592,23 @@ fig3_2()
 
 ## General Notes
 
+### Tables of Mature GRID samples
+
+::: columns
+::: column
+```{r, include=T, echo=F,warning=FALSE, message = FALSE}
+t1()
+```
+:::
+
+::: column
+```{r, include=T, echo=F, warning=FALSE, message = FALSE}
+t2()
+```
+:::
+:::
+
+
 ### General Notes / Assumptions / References
 
 `r htmltopdf(gn())`
