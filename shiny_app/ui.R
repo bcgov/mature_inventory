@@ -531,10 +531,10 @@ ui <- dashboardPage(
                         fluidRow(
                           column(width = 6,
                                  h4("Tree Species Codes / Names"),
-                                 DT::dataTableOutput("sp_table")),
+                                 DT::DTOutput("sp_table")),
                           column(width = 6,
                                  h4("Damage Agent Codes / Names"),
-                                 DT::dataTableOutput('dam_table'))
+                                 DT::DTOutput('dam_table'))
                         ),
                         br(),
                         br(),
@@ -545,7 +545,7 @@ ui <- dashboardPage(
                tabPanel(title = "Past assessment / Reference",
                         h4("Reference for Analyses of Past VRI Phase II / VPIP Projects"),
                         #uiOutput("ref"),
-                        dataTableOutput("ref"),
+                        DTOutput("ref"),
                         br()
                ),
                
