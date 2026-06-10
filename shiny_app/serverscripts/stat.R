@@ -100,7 +100,7 @@ table2 <- reactive({
       #var = factor(var, levels = c("Age (yrs)", "HT (m)", "BA (m2/ha)", "Volume (m3/ha)")),
       var = factor(var,
                    levels = c("age", "ht", "ba", "vol"),
-                   labels = c("Age (yrs)", "HT (m)", "BA (m2/ha)", "Volume (m3/ha)")
+                   labels = c("Age (yrs)", "HT (m)", "BA (m2/ha)", "Net Merch Vol. (m3/ha)")
       ),
            inv = round(inv, 1),
            grd = round(grd, 1),
@@ -134,7 +134,7 @@ table2 <- reactive({
                     sigrope = "ROPE Test")) %>%
     bold(part = 'header', bold = TRUE) %>%
     set_caption(caption = as_paragraph(
-      as_chunk("Table 3. Live standing average age, height, basal area, volume, ROM (grd/inv), 95% confidence limits, and ROPE test.", 
+      as_chunk("Table 3. Live standing average age, height, basal area, net merchantable volume, ROM (grd/inv), 95% confidence limits, and ROPE test.", 
                props = fp_text_default(bold = TRUE))),
       align_with_table = FALSE,
       word_stylename = "Table Caption") %>%
@@ -184,7 +184,7 @@ table3 <- reactive({
   table3 <- lead_vol_dat1_1 %>%
     filter(var == "voldead") %>%
     select(Design, var, n, grd, inv, rom, l95rom, u95rom, sigrope) %>%
-    mutate(var = "Volume (m3/ha)",
+    mutate(var = "Net Merch Vol. (m3/ha)",
            inv = round(inv, 1),
            grd = round(grd, 1),
            rom = round(rom, 2),
@@ -210,7 +210,7 @@ table3 <- reactive({
                     sigrope = "ROPE Test")) %>%
     bold(part = 'header', bold = TRUE) %>%
     set_caption(caption = as_paragraph(
-      as_chunk("Table 4. Dead standing average volume, ROM (grd/inv), 95% confidence limits, and ROPE test.", 
+      as_chunk("Table 4. Dead standing average net merchantable volume, ROM (grd/inv), 95% confidence limits, and ROPE test.", 
                props = fp_text_default(bold = TRUE))),
       align_with_table = FALSE,
       word_stylename = "Table Caption") %>%
@@ -281,7 +281,7 @@ table4 <- reactive({
                     sigrope_vol = "ROPE Test")) %>%
     bold(part = 'header', bold = TRUE) %>%
     set_caption(caption = as_paragraph(
-      as_chunk("Table 5. Live standing volume by leading inventory species group, ROM (grd/inv), 95% confidence limits, and ROPE test. Species are listed when n ≥ 8 in any sampling design. When more than three species are present, those with n < 8 and the lowest counts are grouped under ‘OTH’.", 
+      as_chunk("Table 5. Live standing net merchantable volume by leading inventory species group, ROM (grd/inv), 95% confidence limits, and ROPE test. Species are listed when n ≥ 8 in any sampling design. When more than three species are present, those with n < 8 and the lowest counts are grouped under ‘OTH’.", 
                props = fp_text_default(bold = TRUE))),
       align_with_table = FALSE,
       word_stylename = "Table Caption") %>%
@@ -371,7 +371,7 @@ fig3 <- reactive({
     facet_grid(Design~var, scales = "free", switch = "y", drop = FALSE, #strip.position="left",
                labeller = as_labeller(c(
                  'ba'="Basal Area (m2/ha)",
-                 'vol'="Volume (m3/ha)",
+                 'vol'="Net Merch Vol. (m3/ha)",
                  "GRID" = "GRID",
                  "PHASE2" = "PHASE2",
                  "Quesnel West" = "Quesnel West",
@@ -406,7 +406,7 @@ output$fig3 <- renderPlot({
 output$fig3_caption <- renderUI({
   req(input$SelectVar)
   HTML(paste0("<h5>Figure 8. Components of Bias (total, model, attribute), for 
-              Basal Area (left graph) and Volume (right graph), by ground sample design.</h5>"))
+              Basal Area (left graph) and Net Merchanatble Volume (right graph), by ground sample design.</h5>"))
   
 })
 
@@ -463,7 +463,7 @@ fig3_2 <- reactive({
     delete_part(part = "header")  %>%
     border_remove() %>%
     set_caption(as_paragraph(
-      as_b(as_chunk("Dominant Bias (Volume)")))) %>%
+      as_b(as_chunk("Dominant Bias (Net Merch Vol.)")))) %>%
     autofit()
   
   return(fig3_2)

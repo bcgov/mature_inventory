@@ -310,6 +310,19 @@ ui <- dashboardPage(
                         br(),
                         br()
                ),
+               #tabPanel(title = "Stock Tables & Small Trees",
+               #         #hr(),
+               #         uiOutput('sd_header'),
+               #         br(),
+               #         div(
+               #         plotOutput("stock_table_vol", width = "700px"),
+               #         br(),
+               #         plotOutput("stock_table_stem", width = "700px"),
+               #         br(),
+               #         plotOutput("smalltree", width = "500px"), align = "center"),
+               #         br()
+               #),
+               
                
                "Ground vs. Inventory",
                tabPanel(title = "Stand Summaries",
@@ -341,7 +354,12 @@ ui <- dashboardPage(
                         uiOutput("fig5_caption"),
                         br(),
                         plotOutput("stock_table", width = "800px", height = "400px"),
+                        br(),
+                        plotOutput("stock_table_stem", width = "800px", height = "300px"),
                         uiOutput("stock_caption"),
+                        br(),
+                        div(plotOutput("smalltree", width = "500px"), align = "center"),
+                        uiOutput("smalltree_caption"),
                         br(),
                ),
                #tabPanel(title = "Overall Species",
@@ -491,6 +509,16 @@ ui <- dashboardPage(
              
                
                "General Notes",
+               tabPanel(title = "Tables of Mature GRID samples",
+                        h3("Total number of Mature GRID samples by:"),
+                        br(),
+                        fluidRow(align = 'center',
+                                 column(6,
+                                        uiOutput("mature_tables1")),
+                                 column(6,
+                                        uiOutput("mature_tables2")))
+               ),
+               
                tabPanel(#title = "Disclaimer",
                         #uiOutput('disclaimer'),
                         title = "General Notes / Assumptions",
@@ -503,10 +531,10 @@ ui <- dashboardPage(
                         fluidRow(
                           column(width = 6,
                                  h4("Tree Species Codes / Names"),
-                                 DT::dataTableOutput("sp_table")),
+                                 DT::DTOutput("sp_table")),
                           column(width = 6,
                                  h4("Damage Agent Codes / Names"),
-                                 DT::dataTableOutput('dam_table'))
+                                 DT::DTOutput('dam_table'))
                         ),
                         br(),
                         br(),
@@ -517,7 +545,7 @@ ui <- dashboardPage(
                tabPanel(title = "Past assessment / Reference",
                         h4("Reference for Analyses of Past VRI Phase II / VPIP Projects"),
                         #uiOutput("ref"),
-                        dataTableOutput("ref"),
+                        DTOutput("ref"),
                         br()
                ),
                

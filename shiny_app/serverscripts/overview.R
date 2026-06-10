@@ -338,7 +338,7 @@ samplesize <- reactive({
                                      grid_size[grid_size$Design %in% c("GRID", "Quesnel Overall"),]$grid_size, 
                                      " NFI grid"),
                               ifelse(Design %in% c("SUP-GRID", "Quesnel West"), 
-                                     paste0("fixed area temporary and monitoring samples on a ", 
+                                     paste0("fixed or variable radius temporary and monitoring samples on a ", 
                                             grid_size[grid_size$Design %in% c("SUP-GRID", "Quesnel West"),]$grid_size, 
                                             " supplemental grid"),
                                      "temporary sample clusters using PPSWR selection")
@@ -583,7 +583,7 @@ test1 <- reactive({
     filter(var != "voldead") %>%
     select(Design, var, n, grd, inv, rom, l95rom, u95rom, sigrope) %>%
     mutate(var = fct_recode(var, "Age (yrs)" = "age", "HT (m)" = "ht",
-                            "BA (m2/ha)" = "ba", "Volume (m3/ha)" = "vol"),
+                            "BA (m2/ha)" = "ba", "Net Merch Vol. (m3/ha)" = "vol"),
            inv = round(inv, 1),
            grd = round(grd, 1),
            rom = round(rom, 2),
@@ -631,7 +631,7 @@ test2 <- reactive({
   test2 <- lead_vol_dat1 %>%
     filter(var == "voldead") %>%
     select(Design, var, n, grd, inv, rom, l95rom, u95rom, sigrope) %>%
-    mutate(var = "Volume (m3/ha)",
+    mutate(var = "Net Merch Vol. (m3/ha)",
            inv = round(inv, 1),
            grd = round(grd, 1),
            rom = round(rom, 2),
@@ -673,7 +673,7 @@ test3 <- reactive({
     filter(sigrope_vol %in% c("Y", "N") & n >= 8) %>%
     select(Design, SPC_GRP_INV, n, grd_vol, inv_vol, 
            rom_vol, l95rom_vol, u95rom_vol, sigrope_vol) %>%
-    mutate(var = "Volume (m3/ha)",
+    mutate(var = "Net Merch Vol. (m3/ha)",
            grd_vol = round(grd_vol, 1),
            inv_vol = round(inv_vol, 1),
            rom_vol = round(rom_vol, 2),

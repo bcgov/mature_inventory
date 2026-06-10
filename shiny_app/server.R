@@ -20,6 +20,7 @@ server <- function(input, output, session) {
   
   # Source files with server code for each tab -----------------------------------------
   source(file.path("serverscripts/overview.R"), local = TRUE)$value 
+  #source(file.path("serverscripts/stand.R"), local = TRUE)$value 
   source(file.path("serverscripts/stat.R"), local = TRUE)$value 
   source(file.path("serverscripts/leadingsp.R"), local = TRUE)$value 
   source(file.path("serverscripts/fireimpact.R"), local = TRUE)$value 
