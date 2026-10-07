@@ -189,7 +189,7 @@ output$disclaimer <- renderUI({
 
 gn <- reactive({
   gn <- paste0(
-    '<p>This app was last updated on 14 May, 2026. The data and code for this app are available <a href="https://github.com/bcgov/mature_inventory" target="_blank">here</a>.</p>
+    '<p>This app was last updated on 7 Oct, 2026. The data and code for this app are available <a href="https://github.com/bcgov/mature_inventory" target="_blank">here</a>.</p>
 
 <p><strong>Overview</strong></p>
 <ul>
